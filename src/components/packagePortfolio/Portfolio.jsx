@@ -1,0 +1,105 @@
+import { useState, useRef } from "react"
+import { linksPortfolio } from "../../constants"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/grid"
+import useFetchData from "../../hooks/useFetchData"
+import Skeleton from "../Skeleton"
+import PortfolioHeader from "./PortfolioHeader"
+import Pagination from "./Pagination"
+import Image from "../Image"
+
+const Portfolio = () => {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const swiperRef = useRef(null)
+
+  const handleSlideChange = (swiper) => {
+    setActiveIndex(swiper.activeIndex)
+  }
+
+  const goToNextSlide = () => {
+    if (swiperRef.current?.swiper) {
+      swiperRef.current.swiper.slideNext()
+    }
+  }
+
+  const goToPrevSlide = () => {
+    if (swiperRef.current?.swiper) {
+      swiperRef.current.swiper.slidePrev()
+    }
+  }
+
+  const { data, isLoading } = useFetchData("projects")
+  const projects = data?.status === "Success" ? data.data : []
+
+  return (
+    <div id="gallery" className="bg-main text-white py-10 pt-20 px-5 relative">
+      <div className="w-[150px] h-[150px] absolute -top-10 left-10">
+        <Image src={"../../../images/shape4.webp"} alt="shape" />
+      </div>
+
+      <PortfolioHeader linksPortfolio={linksPortfolio} />
+
+      {/* Swiper Container */}
+      <div className="container">
+        {isLoading ? (
+          <div className="flex justify-between items-center gap-2 flex-col md:flex-row">
+            {Array(3)
+              .fill("")
+              .map((_, index) => (
+                <Skeleton key={index} />
+              ))}
+          </div>
+        ) : projects.length > 0 ? (
+          <Swiper
+            ref={swiperRef}
+            slidesPerView={3}
+            grid={{ rows: 2, fill: "row" }}
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              1206: { slidesPerView: 2 },
+              1207: { slidesPerView: 3 },
+            }}
+            loop={true}
+            spaceBetween={30}
+            onSlideChange={handleSlideChange}
+          >
+            {projects.map((item) => (
+              <SwiperSlide key={item.id}>
+                <div className="relative overflow-hidden rounded-lg w-[320px] h-[320px] m-auto max-w-full">
+                  <Image
+                    src={`/projects/${item.image}`}
+                    alt={item.en_name}
+                    className="opacity-50 w-[315px] h-[315px]"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <h3 className="text-white text-xl font-bold">
+                      {item.en_name}
+                    </h3>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <p className="text-center">No projects available</p>
+        )}
+      </div>
+
+      <Pagination
+        activeIndex={activeIndex}
+        totalSlides={projects.length}
+        goToPrevSlide={goToPrevSlide}
+        goToNextSlide={goToNextSlide}
+      />
+
+      <Image
+        src={"../../../images/shape5.webp"}
+        alt="star"
+        className="absolute -left-5 -bottom-20 w-[387px] h-full"
+      />
+    </div>
+  )
+}
+
+export default Portfolio
