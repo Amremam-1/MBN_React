@@ -2,11 +2,18 @@ import React from "react"
 import { FaPlay } from "react-icons/fa"
 import { MdArrowOutward } from "react-icons/md"
 import Image from "./Image"
-import GlobeCanvas from "./Globe"
+import { useTranslation } from "react-i18next"
+import clsx from "clsx"
 
 const Intro = () => {
+  const { t, i18n } = useTranslation()
+
   return (
-    <section id="home" className="container bg-main py-16">
+    <section
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      id="home"
+      className="container bg-main py-16"
+    >
       <div className="flex justify-between w-11/12">
         <div className="relative">
           <div className="relative max-w-fit">
@@ -15,9 +22,18 @@ const Intro = () => {
               alt="starbg"
               className="absolute -right-0 -top-6 w-[40px] h-[40px]"
             />
-            <h1 className="text-7xl max-xl:text-6xl max-lg:text-5xl  max-md:text-4xl max-sm:text-3xl text-orange-500 text-unlock">
-              Technical & marketing <br />
-              services
+            <h1
+              className={clsx(
+                "text-7xl max-xl:text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl text-orange-500 text-unlock",
+                i18n.language === "ar" && "text-unlock-arbic"
+              )}
+            >
+              {i18n.language === "en"
+                ? "Technical & marketing"
+                : "الخدمات التقنية"}
+              <br />
+
+              {i18n.language === "en" ? "services" : "والتسويقية"}
               <span
                 className="cursor-pointer ms-8 border border-orange-500 rounded-3xl w-80 h-14 max-md:w-48 max-sm:w-40 max-md:h-11 max-[375px]:ms-0
             bg-[url('../../images/bgvideo.webp')] bg-cover bg-center inline-flex items-center mt-8"
@@ -35,16 +51,24 @@ const Intro = () => {
               alt="starbg"
               className="absolute left-28 w-[30px] h-[30px]"
             />
-            <p className="w-2/3 pt-11 text-base font-normal gray-dark max-md:w-full">
-              We offer cutting-edge technical and marketing services through our
-              skilled teams across Saudi Arabia, Egypt, China, and Malaysia
-              aiming to deliver the latest innovations to meet your needs.
+            <p
+              className={clsx(
+                "w-2/3 pt-11 text-base font-normal gray-dark max-md:w-full",
+                i18n.language === "ar" && "text-unlock-arbic"
+              )}
+            >
+              {t("intro-subtitle")}
             </p>
           </div>
 
           <div className="mt-8 w-fit rounded-full border border-orange-500 py-4 px-6 flex items-center justify-between gap-4 cursor-pointer">
-            <button className="text-xl orange font-medium">
-              Lets get Started
+            <button
+              className={clsx(
+                "text-xl orange font-medium",
+                i18n.language === "ar" && "text-unlock-arbic"
+              )}
+            >
+              {t("intro-lets-get-started")}
             </button>
             <span className="w-6 h-6 flex items-center justify-center rounded-md -rotate-12 bg-orange-500">
               <MdArrowOutward className="text-xl text-black" />
@@ -53,14 +77,11 @@ const Intro = () => {
         </div>
 
         <div className="text-center m-auto relative max-sm:hidden">
-          {/* <Image
+          <Image
             src={"../../images/shape1.webp"}
             alt="shape1"
             className="max-md:hidden"
-          /> */}
-          <div className="w-[200px] h-[200px] object-fit">
-            <GlobeCanvas />
-          </div>
+          />
           <Image
             src={"../../images/starbg.webp"}
             alt="star"

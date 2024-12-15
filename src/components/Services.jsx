@@ -4,9 +4,11 @@ import { FiArrowDownRight } from "react-icons/fi"
 import { FaMousePointer } from "react-icons/fa"
 import useFetchData from "../hooks/useFetchData"
 import Skeleton from "../components/Skeleton" // Adjust the path if necessary
+import { useTranslation } from "react-i18next"
 
 const Services = () => {
   const { data, isLoading } = useFetchData("services")
+  const { t, i18n } = useTranslation()
 
   // const services = data?.status === "Success" ? data.data : [] // Changed naming to avoid conflict with import
   const services = useMemo(() => {
@@ -38,11 +40,15 @@ const Services = () => {
   return (
     <section
       id="service"
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
       className="bg-main pb-20"
       style={{
-        backgroundImage: "url('/images/servicebg.png')",
-        backgroundPosition: "right top",
+        backgroundImage: "url('/images/servicebg.webp')",
+        backgroundPosition: `${
+          i18n.language === "ar" ? "left top-[100px]" : "right"
+        }`,
         backgroundRepeat: "no-repeat",
+        backgroundSize: "350px",
       }}
     >
       <div
@@ -51,10 +57,12 @@ const Services = () => {
       >
         <div className="w-[35%] max-[991px]:w-[45%] max-md:w-full">
           <h1
-            className="mb-6 flex items-center gap-4 text-unlock 
-          text-5xl text-[#F28C1E] max-sm:text-4xl"
+            className={clsx(
+              "mb-6 flex items-center gap-4 text-unlock text-5xl text-[#F28C1E] max-sm:text-4xl",
+              i18n.language === "ar" && "text-unlock-arbic"
+            )}
           >
-            Our Service
+            {t("service-title")}
             <span
               className="w-6 h-6 flex items-center justify-center 
             rounded-md -rotate-12 bg-[#F28C1E]"
@@ -69,7 +77,7 @@ const Services = () => {
             ) : (
               services.map((item) => (
                 <div key={item.id} className="flex items-center gap-3 mb-6">
-                  <span className="white font-light text-xl">{item.id}</span>
+                  {/* <span className="white font-light text-xl">{item.id}</span> */}
                   <div
                     className="w-full border border-[#A0A0A0] rounded-2xl p-3 
                   flex items-center text-xl font-light white justify-between"
@@ -92,7 +100,9 @@ const Services = () => {
                       <span
                         className={`inline-block w-4 h-4 transform rounded-full bg-[#F28C1E] transition-transform ${
                           toggles[item.id]
-                            ? "translate-x-6 bg-white"
+                            ? i18n.language === "ar"
+                              ? "-translate-x-6 bg-white"
+                              : "translate-x-6 bg-white"
                             : "translate-x-0"
                         }`}
                       />
@@ -120,12 +130,15 @@ const Services = () => {
                     </p>
 
                     <div className="w-3/5 max-[991px]:w-full">
-                      <h4 className="text-base white my-3">The Tools</h4>
+                      <h4 className="text-base white my-3">
+                        {t("service-tool")}
+                      </h4>
                       <div className="flex flex-row gap-4 flex-wrap">
                         {JSON.parse(item.tools).map((tool, index) => (
                           <p
                             key={index}
-                            className="p-2 border border-[#F28C1E] text-sm opacity-55 rounded-xl text-[#F28C1E]"
+                            className="p-2 border border-[#F28C1E] text-sm
+                             opacity-55 rounded-xl text-[#F28C1E]"
                           >
                             {tool}
                           </p>
@@ -139,8 +152,13 @@ const Services = () => {
         </div>
       </div>
 
-      <div className="m-auto w-fit rounded-full border border-[#1C1C1B] px-5 py-3 flex items-center justify-between gap-2 cursor-pointer">
-        <button className="text-l text-[#E8E8E8] font-medium">View More</button>
+      <div
+        className="m-auto w-fit rounded-full border border-[#1C1C1B]
+       px-5 py-3 flex items-center justify-between gap-2 cursor-pointer"
+      >
+        <button className="text-l text-[#E8E8E8] font-medium">
+          {t("service-view-more")}
+        </button>
         <span>
           <FaMousePointer className="text-xl text-[#E8E8E8] -rotate-12" />
         </span>

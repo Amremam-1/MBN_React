@@ -8,8 +8,10 @@ import Skeleton from "../Skeleton"
 import PortfolioHeader from "./PortfolioHeader"
 import Pagination from "./Pagination"
 import Image from "../Image"
+import { useTranslation } from "react-i18next"
 
 const Portfolio = () => {
+  const { t, i18n } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(0)
   const swiperRef = useRef(null)
 
@@ -33,7 +35,11 @@ const Portfolio = () => {
   const projects = data?.status === "Success" ? data.data : []
 
   return (
-    <div id="gallery" className="bg-main text-white py-10 pt-20 px-5 relative">
+    <div
+      id="gallery"
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      className="bg-main text-white py-10 pt-20 px-5 relative"
+    >
       <div className="w-[150px] h-[150px] absolute -top-10 left-10">
         <Image src={"../../../images/shape4.webp"} alt="shape" />
       </div>
@@ -82,7 +88,7 @@ const Portfolio = () => {
             ))}
           </Swiper>
         ) : (
-          <p className="text-center">No projects available</p>
+          <p className="text-center">{t("portfolio-no-projects")}</p>
         )}
       </div>
 

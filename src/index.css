@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Unlock&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Unlock&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -74,7 +75,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .bg-main {
-  background: #121212;
+  background: #1c1c1b;
 }
 
 .white {
@@ -129,6 +130,10 @@ body::-webkit-scrollbar-thumb {
   font-family: "Unlock", serif;
 }
 
+.text-unlock-arbic {
+  font-family: "Almarai", sans-serif;
+}
+
 /* End Info */
 
 .custom-outline {
@@ -167,4 +172,58 @@ body::-webkit-scrollbar-thumb {
 .progress-bar {
   height: 100%;
   background-color: #ff7f00;
+}
+
+.border-style {
+  background: transparent;
+  border-bottom: 1px gray solid;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+.style-button {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 100px;
+  color: white;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  border: none;
+}
+
+.style-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    180deg,
+    rgba(230, 92, 0, 0.6) 6.78%,
+    rgba(187, 85, 75, 0.6) 56.78%,
+    rgba(144, 78, 149, 0.6) 106.78%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; /* Safari */
+  mask-composite: exclude; /* Other المتصفحات */
+  z-index: -1; /* خلف الزر */
+}
+
+@layer utilities {
+  .bg-custom-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(230, 92, 0, 0.6) 6.78%,
+      rgba(187, 85, 75, 0.6) 56.78%,
+      rgba(144, 78, 149, 0.6) 106.78%
+    );
+  }
 }

@@ -8,9 +8,11 @@ import useFetchData from "../../hooks/useFetchData"
 import TestimonialHeader from "./TestimonialHeader"
 import Skeleton from "./Skeleton"
 import Image from "../Image"
+import { useTranslation } from "react-i18next"
 
 const Testimonial = () => {
   const swiperRef = useRef(null)
+  const { t, i18n } = useTranslation()
 
   const { data, isLoading } = useFetchData("comments")
 
@@ -21,7 +23,7 @@ const Testimonial = () => {
       <TestimonialHeader />
 
       {isLoading ? (
-        <div className="flex justify-between flex-col items-center md:flex-row gap-3 mt-3">
+        <div className="flex justify-between flex-col items-center md:flex-row gap-2 mt-3">
           {Array(3)
             .fill("")
             .map((_, index) => (
@@ -48,7 +50,7 @@ const Testimonial = () => {
             },
             1024: {
               slidesPerView: 2,
-              spaceBetween: 30,
+              spaceBetween: 20,
             },
           }}
         >
@@ -56,7 +58,7 @@ const Testimonial = () => {
             <SwiperSlide key={index}>
               <div className="p-6 shadow-lg flex flex-col w-full">
                 <h3 className="text-2xl font-semibold mb-4 flex items-center white">
-                  Innovative and professional
+                  {t("testmonial-subtitle")}
                   <span className="ml-2 text-yellow-400">
                     <Image
                       src={"../../../images/Frame.webp"}
@@ -106,7 +108,7 @@ const Testimonial = () => {
           ))}
         </Swiper>
       ) : (
-        <p className="text-center text-white">No Comments available</p>
+        <p className="text-center text-white">{t("testmonial-no-comment")}</p>
       )}
     </section>
   )

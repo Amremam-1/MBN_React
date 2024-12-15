@@ -1,37 +1,62 @@
-import { useForm } from "react-hook-form"
 import { MdOutlineMailOutline } from "react-icons/md"
 import { MdOutlineLocalPhone } from "react-icons/md"
 import { IoLocationOutline } from "react-icons/io5"
+import { useTranslation } from "react-i18next"
+import clsx from "clsx"
+import Image from "./Image"
+import Form from "./Form"
 
 const ContactForm = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm()
-
-  const onSubmit = (data) => {
-    console.log(data)
-    reset()
-    // Handle form submission here
-  }
+  const { t, i18n } = useTranslation()
 
   return (
-    <div id="contact" className="bg-gray-900 text-white py-12">
+    <div
+      id="contact"
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
+      className="bg-main text-white py-12 relative"
+    >
+      <div
+        className={clsx(
+          "absolute top-0 right-0 z-20 overflow-visible",
+          i18n.language === "ar" && "absolute top-0 left-0"
+        )}
+      >
+        <Image
+          src={"/public/images/241.svg"}
+          alt="icon"
+          className="h-[580px] opacity-30"
+        />
+      </div>
       <div className="mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Side - Contact Info */}
         <div>
-          <h2 className="text-4xl font-bold text-orange-500 mb-4 text-unlock">
-            Tell Us
+          <div className="flex justify-between items-center">
+            <h2
+              className={clsx(
+                "text-4xl font-bold text-orange-500 mb-4 text-unlock",
+                i18n.language === "ar" && "text-unlock-arbic"
+              )}
+            >
+              {t("contact-title-one")}
+            </h2>
+
+            <Image src={"/images/Frame.svg"} alt={"icon"} />
+          </div>
+          <h2
+            className={clsx(
+              "text-4xl font-bold text-orange-500 mb-8 text-unlock",
+              i18n.language === "ar" && "text-unlock-arbic"
+            )}
+          >
+            {t("contact-title-two")}
           </h2>
-          <h2 className="text-4xl font-bold text-orange-500 mb-8 text-unlock">
-            What Is Your Idea
-          </h2>
-          <p className="text-gray-300 mb-6">
-            Feel free to contact us for any inquiries, collaborations, or
-            project discussions. Our team is here to assist you. You can reach
-            us via phone, email, or by filling out the contact form below.
+          <p
+            className={clsx(
+              "text-gray-300 mb-6",
+              i18n.language === "ar" && "text-unlock-arbic"
+            )}
+          >
+            {t("contact-subtitle")}
           </p>
           <ul className="mb-8 space-y-4">
             <li className="flex items-center">
@@ -50,95 +75,13 @@ const ContactForm = () => {
         </div>
 
         {/* Right Side - Contact Form */}
-        <div>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium">Name</label>
-              <input
-                type="text"
-                {...register("name", { required: "Name is required" })}
-                className="mt-1 p-2 w-full bg-gray-800 rounded border border-gray-600"
-              />
-              {errors.name && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.name.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Email</label>
-              <input
-                type="email"
-                {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-                    message: "Invalid email",
-                  },
-                })}
-                className="mt-1 p-2 w-full bg-gray-800 rounded border border-gray-600"
-              />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.email.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Phone</label>
-              <input
-                type="tel"
-                {...register("phone", { required: "Phone is required" })}
-                className="mt-1 p-2 w-full bg-gray-800 rounded border border-gray-600"
-              />
-              {errors.phone && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.phone.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Services</label>
-              <select
-                {...register("services", {
-                  required: "Please select a service",
-                })}
-                className="mt-1 p-2 w-full bg-gray-800 rounded border border-gray-600"
-              >
-                <option value="">Select a service</option>
-                <option value="webDevelopment">Web Development</option>
-                <option value="graphicDesign">Graphic Design</option>
-                <option value="marketing">Marketing</option>
-              </select>
-              {errors.services && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.services.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <label className="block text-sm font-medium">Message</label>
-              <textarea
-                {...register("message", { required: "Message is required" })}
-                className="mt-1 p-2 w-full bg-gray-800 rounded border border-gray-600"
-              />
-              {errors.message && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.message.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="w-full py-3 bg-orange-500 hover:bg-orange-600 rounded-lg text-white font-semibold"
-              >
-                Send It
-              </button>
-            </div>
-          </form>
+        <div className="relative">
+          <Form />
         </div>
       </div>
+      <footer className="bg-main mt-10 text-white text-center py-4">
+        <p className="text-sm">&copy; 2023 MBN All Rights Reserved</p>
+      </footer>
     </div>
   )
 }
