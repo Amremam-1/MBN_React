@@ -1,8 +1,10 @@
 import React from "react"
 import { useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { GrSend } from "react-icons/gr"
 
 const Form = () => {
+  const { t } = useTranslation()
   const {
     register,
     handleSubmit,
@@ -19,7 +21,9 @@ const Form = () => {
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium">Name</label>
+          <label className="block text-sm font-medium">
+            {t("contact-form-name")}
+          </label>
           <input
             type="text"
             {...register("name", { required: "Name is required" })}
@@ -30,7 +34,9 @@ const Form = () => {
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium">Email</label>
+          <label className="block text-sm font-medium">
+            {t("contact-form-email")}
+          </label>
           <input
             type="email"
             {...register("email", {
@@ -47,7 +53,9 @@ const Form = () => {
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium">Phone</label>
+          <label className="block text-sm font-medium">
+            {t("contact-form-phone")}
+          </label>
           <input
             type="tel"
             {...register("phone", { required: "Phone is required" })}
@@ -58,7 +66,9 @@ const Form = () => {
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium">Services</label>
+          <label className="block text-sm font-medium">
+            {t("contact-form-service")}
+          </label>
           <select
             {...register("services", {
               required: "Please select a service",
@@ -77,7 +87,9 @@ const Form = () => {
           )}
         </div>
         <div>
-          <label className="block text-sm font-medium">Message</label>
+          <label className="block text-sm font-medium">
+            {t("contact-form-message")}
+          </label>
           <textarea
             {...register("message", { required: "Message is required" })}
             className="border-style focus:outline-none"
@@ -93,7 +105,7 @@ const Form = () => {
             type="submit"
             className="style-button flex items-center gap-3 justify-between"
           >
-            Send It
+            {t("contact-form-send")}
             <span>
               <GrSend className="text-xl text-[#e65c00]" />
             </span>

@@ -72,9 +72,9 @@ const Portfolio = () => {
           >
             {projects.map((item) => (
               <SwiperSlide key={item.id}>
-                <div className="relative overflow-hidden rounded-lg w-[320px] h-[320px] m-auto max-w-full">
+                <div className="relative overflow-hidden border border-[#A0A0A0] mb-8 mt-8 rounded-lg w-[320px] h-[320px] m-auto max-w-full">
                   <Image
-                    src={`/projects/${item.image}`}
+                    src={`https://filterr.net/admin/informatinal/${item.image}`}
                     alt={item.en_name}
                     className="opacity-50 w-[315px] h-[315px]"
                   />

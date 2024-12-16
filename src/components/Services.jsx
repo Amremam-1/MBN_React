@@ -44,9 +44,7 @@ const Services = () => {
       className="bg-main pb-20"
       style={{
         backgroundImage: "url('/images/servicebg.webp')",
-        backgroundPosition: `${
-          i18n.language === "ar" ? "left top-[100px]" : "right"
-        }`,
+        backgroundPosition: i18n.language === "en" ? "right" : "left",
         backgroundRepeat: "no-repeat",
         backgroundSize: "350px",
       }}
@@ -153,7 +151,7 @@ const Services = () => {
       </div>
 
       <div
-        className="m-auto w-fit rounded-full border border-[#1C1C1B]
+        className="m-auto w-fit style-button
        px-5 py-3 flex items-center justify-between gap-2 cursor-pointer"
       >
         <button className="text-l text-[#E8E8E8] font-medium">

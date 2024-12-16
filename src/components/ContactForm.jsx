@@ -18,12 +18,12 @@ const ContactForm = () => {
     <div
       id="contact"
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
-      className="bg-main text-white py-12 relative"
+      className="bg-main text-white py-12 relative overflow-hidden"
     >
       <div
         className={clsx(
-          "absolute top-0 right-0 z-20",
-          i18n.language === "ar" && "absolute top-0 left-0"
+          "absolute top-[80px] z-20",
+          i18n.language === "ar" ? "-left-[150px]" : "-right-[180px]"
         )}
       >
         <Image

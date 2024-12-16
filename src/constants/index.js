@@ -34,27 +34,71 @@ export const links = [
 export const mask = [
   {
     id: "1",
-    imageUrl: "../../images/mask1.webp",
+    imageUrl: "../../images/part1.png",
   },
   {
     id: "2",
-    imageUrl: "../../images/mask2.webp",
+    imageUrl: "../../images/part2.png",
   },
   {
     id: "3",
-    imageUrl: "../../images/mask3.webp",
+    imageUrl: "../../images/part3.png",
   },
   {
     id: "4",
-    imageUrl: "../../images/mask4.webp",
+    imageUrl: "../../images/part4.png",
   },
   {
     id: "5",
-    imageUrl: "../../images/mask5.webp",
+    imageUrl: "../../images/part5.png",
   },
   {
     id: "6",
-    imageUrl: "../../images/mask6.webp",
+    imageUrl: "../../images/part6.png",
+  },
+  {
+    id: "7",
+    imageUrl: "../../images/part7.png",
+  },
+  {
+    id: "8",
+    imageUrl: "../../images/part8.png",
+  },
+  {
+    id: "9",
+    imageUrl: "../../images/part9.png",
+  },
+  {
+    id: "10",
+    imageUrl: "../../images/part10.png",
+  },
+  {
+    id: "11",
+    imageUrl: "../../images/part11.png",
+  },
+  {
+    id: "12",
+    imageUrl: "../../images/part12.png",
+  },
+  {
+    id: "13",
+    imageUrl: "../../images/part13.png",
+  },
+  {
+    id: "14",
+    imageUrl: "../../images/part14.png",
+  },
+  {
+    id: "15",
+    imageUrl: "../../images/part15.png",
+  },
+  {
+    id: "16",
+    imageUrl: "../../images/part16.png",
+  },
+  {
+    id: "17",
+    imageUrl: "../../images/part17.png",
   },
 ]
 

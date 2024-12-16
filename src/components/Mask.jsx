@@ -37,7 +37,7 @@ const Mask = () => {
           <SwiperSlide key={item.id}>
             <div
               className="relative w-full aspect-square 
-            max-w-[130px] flex justify-center items-center"
+            max-w-[90px] flex justify-center items-center border rounded-full"
             >
               <Image
                 src={item.imageUrl}
