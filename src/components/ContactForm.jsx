@@ -5,7 +5,12 @@ import { useTranslation } from "react-i18next"
 import clsx from "clsx"
 import Image from "./Image"
 import Form from "./Form"
-
+import { FiFacebook } from "react-icons/fi"
+import { FaInstagram } from "react-icons/fa"
+import { CiLinkedin } from "react-icons/ci"
+import { FaSnapchat } from "react-icons/fa6"
+import { PiTiktokLogoLight } from "react-icons/pi"
+import Footer from "./Footer"
 const ContactForm = () => {
   const { t, i18n } = useTranslation()
 
@@ -17,19 +22,19 @@ const ContactForm = () => {
     >
       <div
         className={clsx(
-          "absolute top-0 right-0 z-20 overflow-visible",
+          "absolute top-0 right-0 z-20",
           i18n.language === "ar" && "absolute top-0 left-0"
         )}
       >
         <Image
-          src={"/public/images/241.svg"}
+          src={"/images/241.svg"}
           alt="icon"
-          className="h-[580px] opacity-30"
+          className="h-[580px] opacity-25"
         />
       </div>
       <div className="mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Side - Contact Info */}
-        <div>
+        <div className="sm:w-[80%] w-[100%]">
           <div className="flex justify-between items-center">
             <h2
               className={clsx(
@@ -60,28 +65,54 @@ const ContactForm = () => {
           </p>
           <ul className="mb-8 space-y-4">
             <li className="flex items-center">
-              <MdOutlineLocalPhone className="text-xl me-4" />
+              <MdOutlineLocalPhone className="text-xl me-4 text-[rgba(242,140,30,1)]" />
               <span>+922 001 126 900</span>
             </li>
             <li className="flex items-center">
-              <MdOutlineMailOutline className="text-xl me-4" />
+              <MdOutlineMailOutline className="text-xl me-4 text-[rgba(242,140,30,1)]" />
               <span>info@momentummix.com</span>
             </li>
             <li className="flex items-center">
-              <IoLocationOutline className="text-xl me-4" />
+              <IoLocationOutline className="text-xl me-4 text-[rgba(242,140,30,1)]" />
               <span>Saudi Arabia</span>
+            </li>
+          </ul>
+
+          <ul className="flex items-center gap-2">
+            <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
+              <a href="">
+                <FiFacebook className="text-xl text-[#E8E8E8]" />
+              </a>
+            </li>
+            <li className="border border-[#E8E8E8]  rounded-full p-[5px] flex items-center justify-center">
+              <a href="">
+                <FaInstagram className="text-xl text-[#E8E8E8]" />
+              </a>
+            </li>
+            <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
+              <a href="">
+                <CiLinkedin className="text-xl text-[#E8E8E8]" />
+              </a>
+            </li>
+            <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
+              <a href="">
+                <FaSnapchat className="text-xl text-[#E8E8E8]" />
+              </a>
+            </li>
+            <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
+              <a href="">
+                <PiTiktokLogoLight className="text-xl text-[#E8E8E8]" />
+              </a>
             </li>
           </ul>
         </div>
 
         {/* Right Side - Contact Form */}
-        <div className="relative">
+        <div className="relative z-30">
           <Form />
         </div>
       </div>
-      <footer className="bg-main mt-10 text-white text-center py-4">
-        <p className="text-sm">&copy; 2023 MBN All Rights Reserved</p>
-      </footer>
+      <Footer />
     </div>
   )
 }

@@ -6,7 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
 * {
+
+  @apply transition-colors duration-300;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -102,11 +105,33 @@ body::-webkit-scrollbar-thumb {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  border: 0.5px solid transparent;
+  position: relative;
+  z-index: 1;
+  border: none;
   cursor: pointer;
-  background: linear-gradient(to right, #e65c00, #904e95);
-  background-clip: padding-box;
-  -webkit-background-clip: padding-box;
+
+}
+
+.border_linear::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(180deg,
+      rgba(230, 92, 0, 0.6) 6.78%,
+      rgba(187, 85, 75, 0.6) 56.78%,
+      rgba(144, 78, 149, 0.6) 106.78%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  /* Safari */
+  mask-composite: exclude;
+  /* Other المتصفحات */
+  z-index: -1;
 }
 
 .shape::before {
@@ -181,6 +206,7 @@ body::-webkit-scrollbar-thumb {
   padding: 0.5rem;
   width: 100%;
 }
+
 .style-button {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -204,26 +230,25 @@ body::-webkit-scrollbar-thumb {
   bottom: 0;
   border-radius: inherit;
   padding: 1.5px;
-  background: linear-gradient(
-    180deg,
-    rgba(230, 92, 0, 0.6) 6.78%,
-    rgba(187, 85, 75, 0.6) 56.78%,
-    rgba(144, 78, 149, 0.6) 106.78%
-  );
+  background: linear-gradient(180deg,
+      rgba(230, 92, 0, 0.6) 6.78%,
+      rgba(187, 85, 75, 0.6) 56.78%,
+      rgba(144, 78, 149, 0.6) 106.78%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; /* Safari */
-  mask-composite: exclude; /* Other المتصفحات */
-  z-index: -1; /* خلف الزر */
+  -webkit-mask-composite: xor;
+  /* Safari */
+  mask-composite: exclude;
+  /* Other المتصفحات */
+  z-index: -1;
+  /* خلف الزر */
 }
 
 @layer utilities {
   .bg-custom-gradient {
-    background: linear-gradient(
-      180deg,
-      rgba(230, 92, 0, 0.6) 6.78%,
-      rgba(187, 85, 75, 0.6) 56.78%,
-      rgba(144, 78, 149, 0.6) 106.78%
-    );
+    background: linear-gradient(180deg,
+        rgba(230, 92, 0, 0.6) 6.78%,
+        rgba(187, 85, 75, 0.6) 56.78%,
+        rgba(144, 78, 149, 0.6) 106.78%);
   }
 }

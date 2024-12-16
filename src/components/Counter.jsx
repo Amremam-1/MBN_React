@@ -8,7 +8,7 @@ const Counter = () => {
   const { i18n } = useTranslation()
   return (
     <section id="about" className="container bg-main w-full py-10 pb-20 pt-10">
-      <div className="py-16 px-15 border border-[#1C1C1B] rounded-[50px] relative overflow-hidden">
+      <div className="py-16 px-15 border border-[#A0A0A0]/50 rounded-[50px] relative overflow-hidden">
         <Image
           src={"../../images/shape2.webp"}
           alt="shape"
@@ -25,7 +25,12 @@ const Counter = () => {
               <h1 className="text-[50px] font-semibold custom-outline">
                 {item.count}
               </h1>
-              <p className={clsx("text-xl white text-unlock", i18n.language === "ar" && "text-unlock-arbic")}>
+              <p
+                className={clsx(
+                  "text-xl white text-unlock",
+                  i18n.language === "ar" && "text-unlock-arbic"
+                )}
+              >
                 {i18n.language === "en" ? item.titleEn : item.titleAr}
               </p>
             </div>

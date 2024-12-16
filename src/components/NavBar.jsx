@@ -4,7 +4,7 @@ import { links } from "../constants"
 import { IoMoonOutline } from "react-icons/io5"
 import { IoIosSearch } from "react-icons/io"
 import { FiGlobe } from "react-icons/fi"
-
+import { IoSunnySharp } from "react-icons/io5"
 import clsx from "clsx"
 import Image from "./Image"
 import { useTranslation } from "react-i18next"
@@ -15,6 +15,21 @@ const NavBar = () => {
   const [activeLink, setActiveLink] = useState("#home")
 
   const [open, setOpen] = useState(false)
+
+  const [darkMode, setDarkMode] = useState(true)
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode)
+  }
+
+  // useEffect(() => {
+  //   // Apply dark mode class to body
+  //   if (darkMode) {
+  //     document.body.classList.add("dark")
+  //   } else {
+  //     document.body.classList.remove("dark")
+  //   }
+  // }, [darkMode])
 
   const handlelanguage = () => {
     setOpen(!open)
@@ -60,7 +75,7 @@ const NavBar = () => {
   return (
     <header
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
-      className="container w-full bg-main sticky top-0 left-0 z-50"
+      className="container w-full bg-[#1c1c1b] sticky top-0 left-0 z-50"
     >
       <div className="flex flex-row justify-between items-center py-4">
         <Link to="/">
@@ -89,8 +104,12 @@ const NavBar = () => {
         </ul>
 
         <div className="flex gap-3 items-center">
-          <div className="border_linear">
-            <IoMoonOutline className="white text-xl" />
+          <div onClick={toggleDarkMode} className="border_linear p-1">
+            {darkMode ? (
+              <IoMoonOutline className="white text-xl" />
+            ) : (
+              <IoSunnySharp className="white text-xl" />
+            )}
           </div>
 
           <div>
@@ -98,10 +117,15 @@ const NavBar = () => {
           </div>
 
           <div className="relative">
-            <FiGlobe
-              onClick={handlelanguage}
-              className="white text-xl cursor-pointer"
-            />
+            <div className="flex gap-1 items-center">
+              <FiGlobe
+                onClick={handlelanguage}
+                className="white text-xl cursor-pointer"
+              />
+              <span className="text-sm text-[#E8E8E8]">
+                {i18n.language === "ar" ? "AR" : "EN"}
+              </span>
+            </div>
 
             {open && (
               <div className="absolute top-7 right-50 z-100">
