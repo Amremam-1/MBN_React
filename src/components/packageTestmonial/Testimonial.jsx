@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next"
 
 const Testimonial = () => {
   const swiperRef = useRef(null)
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   const { data, isLoading } = useFetchData("comments")
 
@@ -44,12 +44,11 @@ const Testimonial = () => {
           onMouseLeave={() => swiperRef.current.swiper.autoplay.start()}
           ref={swiperRef}
           breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
+            320: {
+              slidesPerView: 1, // عند الشاشات الأصغر من 640px، يتم عرض شريحة واحدة
             },
-            1024: {
-              slidesPerView: 2,
+            768: {
+              slidesPerView: 2, // عند الشاشات من 768px أو أكبر، يتم عرض شريحتين
               spaceBetween: 20,
             },
           }}

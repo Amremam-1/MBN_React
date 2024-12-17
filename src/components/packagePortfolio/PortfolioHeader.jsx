@@ -31,10 +31,10 @@ const PortfolioHeader = ({ linksPortfolio }) => {
         {linksPortfolio.map((link) => (
           <button
             key={link.id}
-            className={
-              ("text-gray-300 hover:text-orange-500",
-              i18n.language === "ar" && "text-unlock-arbic")
-            }
+            className={clsx(
+              "text-gray-300 hover:text-orange-500",
+              i18n.language === "ar" && "text-unlock-arbic"
+            )}
           >
             {i18n.language === "en" ? link.linkEn : link.linkAr}
           </button>

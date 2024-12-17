@@ -40,7 +40,7 @@ const Portfolio = () => {
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
       className="bg-main text-white py-10 pt-20 px-5 relative"
     >
-      <div className="w-[150px] h-[150px] absolute -top-10 left-10">
+      <div className="w-[150px] h-[150px] max-[573px]:w-[100px] absolute -top-10 left-10">
         <Image src={"../../../images/shape4.webp"} alt="shape" />
       </div>
 
@@ -66,23 +66,25 @@ const Portfolio = () => {
               1206: { slidesPerView: 2 },
               1207: { slidesPerView: 3 },
             }}
-            loop={true}
+            loop={projects.length > 3}
             spaceBetween={30}
             onSlideChange={handleSlideChange}
           >
             {projects.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="relative overflow-hidden border border-[#A0A0A0] mb-8 mt-8 rounded-lg w-[320px] h-[320px] m-auto max-w-full">
-                  <Image
-                    src={`https://filterr.net/admin/informatinal/${item.image}`}
-                    alt={item.en_name}
-                    className="opacity-50 w-[315px] h-[315px]"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <h3 className="text-white text-xl font-bold">
-                      {item.en_name}
-                    </h3>
-                  </div>
+                  <a href={item.link}>
+                    <Image
+                      src={`https://filterr.net/admin/informatinal/${item.image}`}
+                      alt={item.en_name}
+                      className="opacity-50 w-[315px] h-[315px]"
+                    />
+                    <div className="absolute inset-0 flex items-end justify-start">
+                      <h3 className="text-white text-xl font-bold p-4">
+                        {i18n.language === "en" ? item.en_name : item.ar_name}
+                      </h3>
+                    </div>
+                  </a>
                 </div>
               </SwiperSlide>
             ))}

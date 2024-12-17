@@ -24,7 +24,7 @@ const Intro = () => {
             />
             <h1
               className={clsx(
-                "text-7xl max-xl:text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl text-orange-500 text-unlock",
+                "text-orange-500 text-unlock text-7xl max-[900px]:text-[60px] max-[758px]:text-[70px] max-[573px]:text-[40px]",
                 i18n.language === "ar" && "text-unlock-arbic"
               )}
             >
@@ -61,7 +61,7 @@ const Intro = () => {
             </p>
           </div>
 
-          <div className="mt-8 w-fit rounded-full border border-orange-500 py-4 px-6 flex items-center justify-between gap-4 cursor-pointer">
+          <div className="mt-8 w-fit rounded-full border border-orange-500 py-4 px-6 max-[573px]:px-3 max-[573px]:py-2 flex items-center justify-between gap-4 cursor-pointer">
             <button
               className={clsx(
                 "text-xl orange font-medium",
@@ -77,10 +77,15 @@ const Intro = () => {
         </div>
 
         <div className="text-center m-auto relative max-sm:hidden">
-          <Image
+          {/* <Image
             src={"../../images/shape1.webp"}
             alt="shape1"
             className="max-md:hidden"
+          /> */}
+          <Image
+            src={"../../images/241.gif"}
+            alt="shape1"
+            className="max-md:hidden w-[300px]"
           />
           <Image
             src={"../../images/starbg.webp"}

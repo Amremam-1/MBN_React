@@ -85,7 +85,7 @@ const Services = () => {
                         toggles[item.id] ? "opacity-100" : "opacity-50"
                       )}
                     >
-                      {item.ar_name}
+                      {i18n.language === "en" ? item.en_name : item.ar_name}
                     </span>
                     <button
                       onClick={() => handleToggle(item.id)}
@@ -122,9 +122,13 @@ const Services = () => {
               (item) =>
                 toggles[item.id] && (
                   <div key={item.id}>
-                    <h2 className="text-3xl white mb-2">{item.ar_name}</h2>
+                    <h2 className="text-3xl white mb-2">
+                      {i18n.language === "en" ? item.en_name : item.ar_name}
+                    </h2>
                     <p className="text-[#A0A0A0] font-light w-3/4 max-[991px]:w-full">
-                      {item.ar_description}
+                      {i18n.language === "en"
+                        ? item.ar_description
+                        : item.ar_description}
                     </p>
 
                     <div className="w-3/5 max-[991px]:w-full">
