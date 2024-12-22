@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import { links } from "../constants"
 import { IoMoonOutline } from "react-icons/io5"
@@ -8,28 +8,15 @@ import { IoSunnySharp } from "react-icons/io5"
 import clsx from "clsx"
 import Image from "./Image"
 import { useTranslation } from "react-i18next"
+import ThemeContext from "./ThemeContext"
 
 const NavBar = () => {
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext)
   const { i18n } = useTranslation()
 
   const [activeLink, setActiveLink] = useState("#home")
 
   const [open, setOpen] = useState(false)
-
-  const [darkMode, setDarkMode] = useState(true)
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
-
-  // useEffect(() => {
-  //   // Apply dark mode class to body
-  //   if (darkMode) {
-  //     document.body.classList.add("dark")
-  //   } else {
-  //     document.body.classList.remove("dark")
-  //   }
-  // }, [darkMode])
 
   const handlelanguage = () => {
     setOpen(!open)
@@ -71,18 +58,19 @@ const NavBar = () => {
       setActiveLink(value)
     }
   }
-
   return (
     <header
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
-      className="container w-full bg-[#1c1c1b] sticky top-0 left-0 z-50"
+      className="container w-full bg-darkBg text-white
+       dark:bg-lightBg
+       sticky top-0 left-0 z-50"
     >
       <div className="flex flex-row justify-between items-center py-4">
         <Link to="/">
           <Image src={"../../images/logo.webp"} alt="Logo" />
         </Link>
 
-        <ul className="flex gap-10 max-md:hidden">
+        <ul className="flex gap-10 max-md:hidden" style={{ fontWeight: "500" }}>
           {links.map((item) => (
             <li
               key={item.id}
@@ -90,8 +78,8 @@ const NavBar = () => {
               className={clsx(
                 "flex items-center cursor-pointer",
                 activeLink === item.link
-                  ? "text-orange-400 shape"
-                  : "text-white",
+                  ? "text-orange-400 dark:text-orangeText shape"
+                  : "text-white dark:text-lightText",
 
                 i18n.language === "ar" && "text-unlock-arbic"
               )}
@@ -106,30 +94,30 @@ const NavBar = () => {
         <div className="flex gap-3 items-center">
           <div onClick={toggleDarkMode} className="border_linear p-1">
             {darkMode ? (
-              <IoMoonOutline className="white text-xl" />
+              <IoMoonOutline className="dark:text-lightText  text-xl" />
             ) : (
-              <IoSunnySharp className="white text-xl" />
+              <IoSunnySharp className="dark:text-lightText text-xl" />
             )}
           </div>
 
           <div>
-            <IoIosSearch className="white text-xl cursor-pointer" />
+            <IoIosSearch className="dark:text-lightText text-xl cursor-pointer" />
           </div>
 
           <div className="relative">
             <div className="flex gap-1 items-center">
               <FiGlobe
                 onClick={handlelanguage}
-                className="white text-xl cursor-pointer"
+                className="white dark:text-lightText text-xl cursor-pointer"
               />
-              <span className="text-sm text-[#E8E8E8]">
+              <span className="text-sm dark:text-lightText text-[#E8E8E8]">
                 {i18n.language === "ar" ? "AR" : "EN"}
               </span>
             </div>
 
             {open && (
               <div className="absolute top-7 right-50 z-100">
-                <div className="px-3 bg-gray-900/80 text-white flex flex-col cursor-pointer font-mono">
+                <div className="px-3 bg-gray-900/80 dark:bg-grayText text-white flex flex-col cursor-pointer font-mono">
                   <span
                     onClick={() => {
                       i18n.changeLanguage("en")

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useContext } from "react"
 import { linksPortfolio } from "../../constants"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
@@ -9,8 +9,11 @@ import PortfolioHeader from "./PortfolioHeader"
 import Pagination from "./Pagination"
 import Image from "../Image"
 import { useTranslation } from "react-i18next"
+import ThemeContext from "../ThemeContext"
+import clsx from "clsx"
 
 const Portfolio = () => {
+  const { darkMode } = useContext(ThemeContext)
   const { t, i18n } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(0)
   const swiperRef = useRef(null)
@@ -38,7 +41,10 @@ const Portfolio = () => {
     <div
       id="gallery"
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
-      className="bg-main text-white py-10 pt-20 px-5 relative"
+      className={clsx(
+        "bg-darkBg text-white py-10 pt-20 px-5 relative",
+        darkMode && "bg-lightBg"
+      )}
     >
       <div className="w-[150px] h-[150px] max-[573px]:w-[100px] absolute -top-10 left-10">
         <Image src={"../../../images/shape4.webp"} alt="shape" />

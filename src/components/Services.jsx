@@ -1,14 +1,16 @@
 import clsx from "clsx"
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useContext, useEffect, useMemo, useState } from "react"
 import { FiArrowDownRight } from "react-icons/fi"
 import { FaMousePointer } from "react-icons/fa"
 import useFetchData from "../hooks/useFetchData"
 import Skeleton from "../components/Skeleton" // Adjust the path if necessary
 import { useTranslation } from "react-i18next"
+import ThemeContext from "./ThemeContext"
 
 const Services = () => {
   const { data, isLoading } = useFetchData("services")
   const { t, i18n } = useTranslation()
+  const { darkMode } = useContext(ThemeContext)
 
   // const services = data?.status === "Success" ? data.data : [] // Changed naming to avoid conflict with import
   const services = useMemo(() => {
@@ -41,7 +43,7 @@ const Services = () => {
     <section
       id="service"
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
-      className="bg-main pb-20"
+      className={clsx("bg-darkBg pb-20", darkMode && "bg-lightBg")}
       style={{
         backgroundImage: "url('/images/servicebg.webp')",
         backgroundPosition: i18n.language === "en" ? "right" : "left",
@@ -56,16 +58,16 @@ const Services = () => {
         <div className="w-[35%] max-[991px]:w-[45%] max-md:w-full">
           <h1
             className={clsx(
-              "mb-6 flex items-center gap-4 text-unlock text-5xl text-[#F28C1E] max-sm:text-4xl",
+              "mb-6 flex items-center gap-4 text-unlock text-5xl text-[#F28C1E] max-sm:text-4xl  dark:text-orangeText",
               i18n.language === "ar" && "text-unlock-arbic"
             )}
           >
             {t("service-title")}
             <span
               className="w-6 h-6 flex items-center justify-center 
-            rounded-md -rotate-12 bg-[#F28C1E]"
+            rounded-md -rotate-12 bg-[#F28C1E] dark:bg-orangeText"
             >
-              <FiArrowDownRight className="text-2xl text-black" />
+              <FiArrowDownRight className="text-2xl text-black dark:text-white" />
             </span>
           </h1>
 
@@ -82,7 +84,8 @@ const Services = () => {
                   >
                     <span
                       className={clsx(
-                        toggles[item.id] ? "opacity-100" : "opacity-50"
+                        toggles[item.id] ? "opacity-100" : "opacity-50",
+                        "dark:text-lightText dark:font-normal"
                       )}
                     >
                       {i18n.language === "en" ? item.en_name : item.ar_name}
@@ -91,7 +94,9 @@ const Services = () => {
                       onClick={() => handleToggle(item.id)}
                       className={clsx(
                         "relative inline-flex items-center h-6 w-12 rounded-full p-1 transition-colors duration-300",
-                        toggles[item.id] ? "bg-[#F28C1E]" : ""
+                        toggles[item.id]
+                          ? "bg-[#F28C1E] dark:bg-orangeText"
+                          : ""
                       )}
                       style={{ border: "1px solid #F28C1E" }}
                     >
@@ -122,25 +127,25 @@ const Services = () => {
               (item) =>
                 toggles[item.id] && (
                   <div key={item.id}>
-                    <h2 className="text-3xl white mb-2">
+                    <h2 className="text-3xl white mb-2 dark:text-lightText">
                       {i18n.language === "en" ? item.en_name : item.ar_name}
                     </h2>
-                    <p className="text-[#A0A0A0] font-light w-3/4 max-[991px]:w-full">
+                    <p className="text-[#A0A0A0] font-light w-3/4 max-[991px]:w-full dark:text-grayText dark:font-normal">
                       {i18n.language === "en"
                         ? item.ar_description
                         : item.ar_description}
                     </p>
 
                     <div className="w-3/5 max-[991px]:w-full">
-                      <h4 className="text-base white my-3">
+                      <h4 className="text-base white my-3 dark:text-lightText">
                         {t("service-tool")}
                       </h4>
                       <div className="flex flex-row gap-4 flex-wrap">
                         {JSON.parse(item.tools).map((tool, index) => (
                           <p
                             key={index}
-                            className="p-2 border border-[#F28C1E] text-sm
-                             opacity-55 rounded-xl text-[#F28C1E]"
+                            className="p-2 border border-[#F28C1E] dark:border-none dark:bg-orangeText/90 dark:opacity-100 text-sm
+                             opacity-50 rounded-xl text-[#F28C1E] dark:text-white"
                           >
                             {tool}
                           </p>
@@ -158,11 +163,11 @@ const Services = () => {
         className="m-auto w-fit style-button
        px-5 py-3 flex items-center justify-between gap-2 cursor-pointer"
       >
-        <button className="text-l text-[#E8E8E8] font-medium">
+        <button className="text-l text-[#E8E8E8] font-medium dark:text-lightText">
           {t("service-view-more")}
         </button>
         <span>
-          <FaMousePointer className="text-xl text-[#E8E8E8] -rotate-12" />
+          <FaMousePointer className="text-xl text-[#E8E8E8] -rotate-12 dark:text-grayText" />
         </span>
       </div>
     </section>

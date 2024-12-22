@@ -2,7 +2,6 @@ import React from "react"
 import Image from "../Image"
 import { useTranslation } from "react-i18next"
 import clsx from "clsx"
-
 const PortfolioHeader = ({ linksPortfolio }) => {
   const { t, i18n } = useTranslation()
   return (
@@ -20,7 +19,7 @@ const PortfolioHeader = ({ linksPortfolio }) => {
       />
       <h1
         className={clsx(
-          "text-5xl font-bold text-orange-500 text-unlock",
+          "text-5xl font-bold text-orange-500 dark:text-orangeText text-unlock",
           i18n.language === "ar" && "text-unlock-arbic"
         )}
       >
@@ -32,7 +31,7 @@ const PortfolioHeader = ({ linksPortfolio }) => {
           <button
             key={link.id}
             className={clsx(
-              "text-gray-300 hover:text-orange-500",
+              "text-gray-300 hover:text-orange-500 dark:text-lightText dark:font-normal dark:hover:text-orangeText",
               i18n.language === "ar" && "text-unlock-arbic"
             )}
           >

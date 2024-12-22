@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useContext, useRef } from "react"
 
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay } from "swiper/modules"
@@ -9,8 +9,11 @@ import TestimonialHeader from "./TestimonialHeader"
 import Skeleton from "./Skeleton"
 import Image from "../Image"
 import { useTranslation } from "react-i18next"
+import ThemeContext from "../ThemeContext"
+import clsx from "clsx"
 
 const Testimonial = () => {
+  const { darkMode } = useContext(ThemeContext)
   const swiperRef = useRef(null)
   const { t } = useTranslation()
 
@@ -19,7 +22,9 @@ const Testimonial = () => {
   const testimonials = data?.status === "Success" ? data.data : []
 
   return (
-    <section className="container bg-main py-10">
+    <section
+      className={clsx("container bg-darkBg py-14", darkMode && "bg-lightBg")}
+    >
       <TestimonialHeader />
 
       {isLoading ? (
@@ -56,7 +61,7 @@ const Testimonial = () => {
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
               <div className="p-6 shadow-lg flex flex-col w-full">
-                <h3 className="text-2xl font-semibold mb-4 flex items-center white">
+                <h3 className="text-2xl font-semibold mb-4 flex items-center white dark:text-lightText">
                   {t("testmonial-subtitle")}
                   <span className="ml-2 text-yellow-400">
                     <Image
@@ -66,7 +71,7 @@ const Testimonial = () => {
                     />
                   </span>
                 </h3>
-                <p className="text-[#A0A0A0] font-light mb-6 w-3/4 max-md:w-full">
+                <p className="text-[#A0A0A0] font-light mb-6 w-3/4 max-md:w-full dark:text-[#333]">
                   {testimonial.comment}
                 </p>
                 <div className="flex items-center mt-auto">
@@ -76,7 +81,7 @@ const Testimonial = () => {
                     className="rounded-full w-[50px] h-[50px]"
                   />
                   <div className="ml-4">
-                    <p className="text-lg font-semibold white">
+                    <p className="text-lg font-semibold white dark:text-lightText">
                       {testimonial.name}
                     </p>
                     <div className="flex">
@@ -86,7 +91,7 @@ const Testimonial = () => {
                           <svg
                             key={i}
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-[#BB554B]"
+                            className="h-5 w-5 text-[#BB554B] dark:text-orangeText"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                           >
@@ -107,7 +112,9 @@ const Testimonial = () => {
           ))}
         </Swiper>
       ) : (
-        <p className="text-center text-white">{t("testmonial-no-comment")}</p>
+        <p className="text-center text-white dark:text-lightText">
+          {t("testmonial-no-comment")}
+        </p>
       )}
     </section>
   )

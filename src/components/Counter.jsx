@@ -1,13 +1,21 @@
 import { counter } from "../constants"
-import React from "react"
 import Image from "./Image"
 import { useTranslation } from "react-i18next"
 import clsx from "clsx"
+import { useContext } from "react"
+import ThemeContext from "./ThemeContext"
 
 const Counter = () => {
   const { i18n } = useTranslation()
+  const { darkMode } = useContext(ThemeContext)
   return (
-    <section id="about" className="container bg-main w-full py-10 pb-20 pt-10">
+    <section
+      id="about"
+      className={clsx(
+        "container bg-darkBg w-full py-10 pb-20 pt-10",
+        darkMode && "bg-lightBg"
+      )}
+    >
       <div className="py-16 px-15 border border-[#A0A0A0]/50 rounded-[50px] relative overflow-hidden">
         <Image
           src={"../../images/shape2.webp"}
@@ -27,7 +35,7 @@ const Counter = () => {
               </h1>
               <p
                 className={clsx(
-                  "text-xl white text-unlock",
+                  "text-xl white text-unlock dark:text-lightText",
                   i18n.language === "ar" && "text-unlock-arbic"
                 )}
               >

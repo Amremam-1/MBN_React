@@ -11,14 +11,22 @@ import { CiLinkedin } from "react-icons/ci"
 import { FaSnapchat } from "react-icons/fa6"
 import { PiTiktokLogoLight } from "react-icons/pi"
 import Footer from "./Footer"
+
+import ThemeContext from "./ThemeContext"
+import { useContext } from "react"
+
 const ContactForm = () => {
+  const { darkMode } = useContext(ThemeContext)
   const { t, i18n } = useTranslation()
 
   return (
     <div
       id="contact"
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
-      className="bg-main text-white py-12 relative overflow-hidden"
+      className={clsx(
+        "bg-darkBg text-white py-12 relative overflow-hidden",
+        darkMode && "bg-lightBg"
+      )}
     >
       <div
         className={clsx(
@@ -38,7 +46,7 @@ const ContactForm = () => {
           <div className="flex justify-between items-center">
             <h2
               className={clsx(
-                "text-4xl font-bold text-orange-500 mb-4 text-unlock",
+                "text-4xl font-bold text-orange-500 dark:text-orangeText mb-4 text-unlock",
                 i18n.language === "ar" && "text-unlock-arbic"
               )}
             >
@@ -49,7 +57,7 @@ const ContactForm = () => {
           </div>
           <h2
             className={clsx(
-              "text-4xl font-bold text-orange-500 mb-8 text-unlock",
+              "text-4xl font-bold text-orange-500 dark:text-orangeText mb-8 text-unlock",
               i18n.language === "ar" && "text-unlock-arbic"
             )}
           >
@@ -57,7 +65,7 @@ const ContactForm = () => {
           </h2>
           <p
             className={clsx(
-              "text-gray-300 mb-6",
+              "text-gray-300 mb-6 dark:text-grayText dark:font-medium",
               i18n.language === "ar" && "text-unlock-arbic"
             )}
           >
@@ -66,15 +74,15 @@ const ContactForm = () => {
           <ul className="mb-8 space-y-4">
             <li className="flex items-center">
               <MdOutlineLocalPhone className="text-xl me-4 text-[rgba(242,140,30,1)]" />
-              <span>+922 001 126 900</span>
+              <span className="dark:text-lightText">+922 001 126 900</span>
             </li>
             <li className="flex items-center">
               <MdOutlineMailOutline className="text-xl me-4 text-[rgba(242,140,30,1)]" />
-              <span>info@momentummix.com</span>
+              <span className="dark:text-lightText">info@momentummix.com</span>
             </li>
             <li className="flex items-center">
               <IoLocationOutline className="text-xl me-4 text-[rgba(242,140,30,1)]" />
-              <span>Saudi Arabia</span>
+              <span className="dark:text-lightText">Saudi Arabia</span>
             </li>
           </ul>
 

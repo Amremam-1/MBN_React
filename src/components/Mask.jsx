@@ -1,18 +1,21 @@
 "use client"
-import React from "react"
+import React, { useContext } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/autoplay"
 import { mask } from "../constants"
 import Image from "./Image"
 import { register } from "swiper/element/bundle"
+import ThemeContext from "./ThemeContext"
+import clsx from "clsx"
 
 // Register the modules
 register()
 
 const Mask = () => {
+  const { darkMode } = useContext(ThemeContext)
   return (
-    <section className="bg-[#3e2d20] py-6">
+    <section className={clsx("bg-[#3e2d20] py-6", darkMode && "bg-grayText/80")}>
       <Swiper
         spaceBetween={30}
         slidesPerView={5}
@@ -35,11 +38,15 @@ const Mask = () => {
       >
         {mask.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="relative w-full  max-w-[160px] border border-gray-400 rounded-full flex justify-center items-center">
+            <div
+              className="relative w-[160px] h-[160px]
+             border border-gray-400 rounded-full flex
+              justify-center items-center dark:bg-white dark:border-orangeText"
+            >
               <Image
                 src={item.imageUrl}
                 alt={item.id}
-                className="w-full h-full object-contain"
+                className="w-full h-full"
               />
             </div>
           </SwiperSlide>

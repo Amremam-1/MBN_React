@@ -15,14 +15,14 @@ const TestimonialHeader = () => {
         <div className="flex gap-4 relative">
           <h1
             className={clsx(
-              "text-unlock text-5xl text-[#F28C1E] max-md:text-3xl",
+              "text-unlock text-5xl text-[#F28C1E] dark:text-orangeText max-md:text-3xl",
               i18n.language === "ar" && "text-unlock-arbic"
             )}
           >
             {t("testmonial-title-one")}
           </h1>
-          <span className="w-6 h-6 flex items-center justify-center rounded-md -rotate-12 bg-[#F28C1E]">
-            <FiArrowDownRight className="text-xl text-black" />
+          <span className="w-6 h-6 flex items-center justify-center rounded-md -rotate-12 bg-[#F28C1E] dark:bg-orangeText">
+            <FiArrowDownRight className="text-xl text-black dark:text-white" />
           </span>
 
           <Image
@@ -39,7 +39,7 @@ const TestimonialHeader = () => {
         </div>
         <h1
           className={clsx(
-            "text-unlock text-5xl text-[#F28C1E] ms-20 max-md:ms-0 max-md:text-3xl",
+            "text-unlock text-5xl text-[#F28C1E] dark:text-orangeText ms-20 max-md:ms-0 max-md:text-3xl",
             i18n.language === "ar" && "text-unlock-arbic"
           )}
         >
