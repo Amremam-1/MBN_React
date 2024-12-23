@@ -67,7 +67,7 @@ const NavBar = () => {
     >
       <div className="flex flex-row justify-between items-center py-4">
         <Link to="/">
-          <Image src={"../../images/logo.webp"} alt="Logo" />
+          <Image src={"../../images/logo.png"} alt="Logo" className="w-[80px]" />
         </Link>
 
         <ul className="flex gap-10 max-md:hidden" style={{ fontWeight: "500" }}>
@@ -100,9 +100,7 @@ const NavBar = () => {
             )}
           </div>
 
-          <div>
-            <IoIosSearch className="dark:text-lightText text-xl cursor-pointer" />
-          </div>
+ 
 
           <div className="relative">
             <div className="flex gap-1 items-center">

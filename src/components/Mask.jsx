@@ -15,7 +15,12 @@ register()
 const Mask = () => {
   const { darkMode } = useContext(ThemeContext)
   return (
-    <section className={clsx("bg-[#3e2d20] py-6", darkMode && "bg-grayText/80")}>
+    <section
+      className={clsx(
+        "bg-[#3e2d20] h-[160px] flex items-center",
+        darkMode && "bg-grayText/20"
+      )}
+    >
       <Swiper
         spaceBetween={30}
         slidesPerView={5}
@@ -39,14 +44,14 @@ const Mask = () => {
         {mask.map((item) => (
           <SwiperSlide key={item.id}>
             <div
-              className="relative w-[160px] h-[160px]
-             border border-gray-400 rounded-full flex
-              justify-center items-center dark:bg-white dark:border-orangeText"
+              className="relative
+               flex
+              justify-center items-center dark:border-orangeText"
             >
               <Image
                 src={item.imageUrl}
                 alt={item.id}
-                className="w-full h-full"
+                className="w-[260px] rounded-full object-fill"
               />
             </div>
           </SwiperSlide>

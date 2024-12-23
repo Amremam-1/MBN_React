@@ -1,11 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import { FiArrowDownRight } from "react-icons/fi"
 import Image from "../Image"
 import { useTranslation } from "react-i18next"
 import clsx from "clsx"
+import ThemeContext from "../ThemeContext"
 
 const TestimonialHeader = () => {
   const { t, i18n } = useTranslation()
+  const { darkMode } = useContext(ThemeContext)
   return (
     <div
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
@@ -26,13 +28,21 @@ const TestimonialHeader = () => {
           </span>
 
           <Image
-            src={"../../../images/starbg.webp"}
+            src={
+              darkMode
+                ? "../../images/starwhite.png"
+                : "../../images/starbg.webp"
+            }
             alt="starbg"
             className="absolute -right-0 -top-6 w-[40px] h-[40]"
           />
 
           <Image
-            src={"../../../images/starbg.webp"}
+            src={
+              darkMode
+                ? "../../images/starwhite.png"
+                : "../../images/starbg.webp"
+            }
             alt="starbg"
             className="absolute left-0 -bottom-20 w-[40px] h-[40]"
           />
@@ -48,9 +58,9 @@ const TestimonialHeader = () => {
       </div>
 
       <Image
-        src={"../../../images/shape6.webp"}
+        src={"../../../images/3.png"}
         alt="shape6"
-        className="max-md:hidden w-[170px] h-[170]"
+        className={clsx("max-md:hidden w-[170px] h-[170px]" ,i18n.language === "ar" && "transform scale-x-[-1]")}
       />
     </div>
   )

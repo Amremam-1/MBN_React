@@ -18,8 +18,8 @@ i18n
   .use(initReactI18next) // تكامل مع React
   .init({
     resources,
-    lng: "en", // اللغة الافتراضية
-    fallbackLng: "en", // اللغة التي يتم استخدامها في حالة عدم توفر الترجمة
+    lng: "ar", // اللغة الافتراضية
+    fallbackLng: "ar", // اللغة التي يتم استخدامها في حالة عدم توفر الترجمة
     interpolation: {
       escapeValue: false, // React يتولى الحماية من XSS
     },

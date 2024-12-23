@@ -44,12 +44,12 @@ const Services = () => {
       id="service"
       dir={i18n.language === "ar" ? "rtl" : "ltr"}
       className={clsx("bg-darkBg pb-20", darkMode && "bg-lightBg")}
-      style={{
-        backgroundImage: "url('/images/servicebg.webp')",
-        backgroundPosition: i18n.language === "en" ? "right" : "left",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "350px",
-      }}
+      // style={{
+      //   backgroundImage: "url('/images/servicebg.webp')",
+      //   backgroundPosition: i18n.language === "en" ? "right" : "left",
+      //   backgroundRepeat: "no-repeat",
+      //   backgroundSize: "350px",
+      // }}
     >
       <div
         className="py-16 container flex justify-between min-[769px]:items-center

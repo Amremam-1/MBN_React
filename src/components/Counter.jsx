@@ -45,12 +45,12 @@ const Counter = () => {
           ))}
         </div>
 
-        <Image
+        {/* <Image
           src={"../../images/shape3.webp"}
           alt="shape"
           className="absolute bottom-[-100px] right-[-50px]
           w-[236px] h-[236px]"
-        />
+        /> */}
       </div>
     </section>
   )

@@ -1,19 +1,26 @@
-import React from "react"
+import React, { useContext } from "react"
 import Image from "../Image"
 import { useTranslation } from "react-i18next"
 import clsx from "clsx"
+import ThemeContext from "../ThemeContext"
+
 const PortfolioHeader = ({ linksPortfolio }) => {
   const { t, i18n } = useTranslation()
+  const { darkMode } = useContext(ThemeContext)
   return (
     <div className="text-center mb-10 relative">
       <Image
-        src={"../../../images/starbg.webp"}
+        src={
+          darkMode ? "../../images/starwhite.png" : "../../images/starbg.webp"
+        }
         alt="star"
         className="absolute left-0 w-[30px] h-[30px]"
       />
 
       <Image
-        src={"../../../images/starbg.webp"}
+        src={
+          darkMode ? "../../images/starwhite.png" : "../../images/starbg.webp"
+        }
         alt="star"
         className="absolute right-[20%] w-[30px] h-[30px]"
       />

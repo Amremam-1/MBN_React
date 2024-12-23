@@ -34,11 +34,11 @@ const ContactForm = () => {
           i18n.language === "ar" ? "-left-[150px]" : "-right-[180px]"
         )}
       >
-        <Image
+        {/* <Image
           src={"/images/241.svg"}
           alt="icon"
           className="h-[580px] opacity-25"
-        />
+        /> */}
       </div>
       <div className="mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Side - Contact Info */}
@@ -89,27 +89,27 @@ const ContactForm = () => {
           <ul className="flex items-center gap-2">
             <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
               <a href="">
-                <FiFacebook className="text-xl text-[#E8E8E8]" />
+                <FiFacebook className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
             <li className="border border-[#E8E8E8]  rounded-full p-[5px] flex items-center justify-center">
               <a href="">
-                <FaInstagram className="text-xl text-[#E8E8E8]" />
+                <FaInstagram className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
             <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
               <a href="">
-                <CiLinkedin className="text-xl text-[#E8E8E8]" />
+                <CiLinkedin className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
             <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
               <a href="">
-                <FaSnapchat className="text-xl text-[#E8E8E8]" />
+                <FaSnapchat className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
-            <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
+            <li className="border border-[#E8E8E8]  rounded-full p-[5px] flex items-center justify-center">
               <a href="">
-                <PiTiktokLogoLight className="text-xl text-[#E8E8E8]" />
+                <PiTiktokLogoLight className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
           </ul>

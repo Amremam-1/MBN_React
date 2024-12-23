@@ -19,7 +19,11 @@ const Intro = () => {
         <div className="relative">
           <div className="relative max-w-fit">
             <Image
-              src={"../../images/starbg.webp"}
+              src={
+                darkMode
+                  ? "../../images/starwhite.png"
+                  : "../../images/starbg.webp"
+              }
               alt="starbg"
               className="absolute -right-0 -top-6 w-[40px] h-[40px]"
             />
@@ -48,7 +52,11 @@ const Intro = () => {
 
           <div className="relative max-w-fit">
             <Image
-              src={"../../images/starbg.webp"}
+              src={
+                darkMode
+                  ? "../../images/starwhite.png"
+                  : "../../images/starbg.webp"
+              }
               alt="starbg"
               className="absolute left-28 w-[30px] h-[30px]"
             />
@@ -93,10 +101,14 @@ const Intro = () => {
           <Image
             src={"../../images/241.gif"}
             alt="shape1"
-            className="max-md:hidden w-[300px]"
+            className="max-md:hidden w-[350px]"
           />
           <Image
-            src={"../../images/starbg.webp"}
+            src={
+              darkMode
+                ? "../../images/starwhite.png"
+                : "../../images/starbg.webp"
+            }
             alt="star"
             className="absolute left-0 -bottom-11 w-[30px] h-[30px]"
           />

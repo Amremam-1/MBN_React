@@ -46,8 +46,12 @@ const Portfolio = () => {
         darkMode && "bg-lightBg"
       )}
     >
-      <div className="w-[150px] h-[150px] max-[573px]:w-[100px] absolute -top-10 left-10">
-        <Image src={"../../../images/shape4.webp"} alt="shape" />
+      <div
+        className={clsx(
+          "w-[150px] h-[150px] max-[573px]:w-[100px] absolute -top-10 left-10"
+        )}
+      >
+        <Image src={"../../../images/1.png"} alt="shape" />
       </div>
 
       <PortfolioHeader linksPortfolio={linksPortfolio} />
@@ -78,7 +82,7 @@ const Portfolio = () => {
           >
             {projects.map((item) => (
               <SwiperSlide key={item.id}>
-                <div className="relative overflow-hidden border border-[#A0A0A0] mb-8 mt-8 rounded-lg w-[320px] h-[320px] m-auto max-w-full">
+                <div className="relative overflow-hidden border border-[#A0A0A0] mb-8 mt-8 rounded-lg w-[320px] h-[320px] max-w-full">
                   <a href={item.link}>
                     <Image
                       src={`https://filterr.net/admin/informatinal/${item.image}`}

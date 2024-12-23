@@ -7,16 +7,19 @@ const Pagination = ({
   goToPrevSlide,
   goToNextSlide,
 }) => {
-  const { t } = useTranslation() // Correct placement of the hook
+  const { i18n } = useTranslation() // Correct placement of the hook
 
   return (
-    <div className="container flex justify-between max-[768px]:flex-col m-auto mt-5 relative">
-      <div className="flex items-center m-auto gap-4">
+    <div
+      dir={i18n.language === "ar" ? "ltr" : "rt"}
+      className="container flex justify-between max-[768px]:flex-col m-auto mt-5 relative"
+    >
+      <div className="flex items-center justify-center m-auto gap-4">
         <button onClick={goToPrevSlide} className="pagination-arrow">
-          <FaArrowLeft />
+          {i18n === "en" ? <FaArrowRight /> : <FaArrowLeft />}
         </button>
         <div className="flex items-center mx-4">
-          <span>{activeIndex + 1}</span>
+          <span className="dark:text-lightText">{activeIndex + 1}</span>
           <div className="progress-bar-container mx-2 w-24 bg-gray-700 h-2 rounded-full">
             <div
               className="progress-bar bg-orange-500 h-full rounded-full"
@@ -25,13 +28,12 @@ const Pagination = ({
               }}
             />
           </div>
-          <span>{totalSlides}</span>
+          <span className="dark:text-lightText">{totalSlides}</span>
         </div>
         <button onClick={goToNextSlide} className="pagination-arrow">
-          <FaArrowRight />
+          {i18n === "en" ? <FaArrowLeft /> : <FaArrowRight />}
         </button>
       </div>
-      <button className="text-orange-500">{t("portfolio-view-more")}</button>
     </div>
   )
 }

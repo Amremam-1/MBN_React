@@ -5,7 +5,7 @@ const baseURL = "https://filterr.net/admin/informatinal/api";
 const api = axios.create({
   baseURL,
   headers: {
-    Authorization: `Bearer 76|0wIx25k2iRZuM2x7fIQ4uaZ6M8LSc3umYUjcMHQz9f301fd6`,
+    Authorization: `Bearer 95|TzlzYStUdqPGubIYQ93XUFrFARmXxT08vmJerCSafc6e1738`,
     "Content-Type": "multipart/form-data",
   },
 });

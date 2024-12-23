@@ -61,7 +61,7 @@ const Testimonial = () => {
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
               <div className="p-6 shadow-lg flex flex-col w-full">
-                <h3 className="text-2xl font-semibold mb-4 flex items-center white dark:text-lightText">
+                {/* <h3 className="text-2xl font-semibold mb-4 flex items-center white dark:text-lightText">
                   {t("testmonial-subtitle")}
                   <span className="ml-2 text-yellow-400">
                     <Image
@@ -70,7 +70,7 @@ const Testimonial = () => {
                       className="w-[40px] h-[40px]"
                     />
                   </span>
-                </h3>
+                </h3> */}
                 <p className="text-[#A0A0A0] font-light mb-6 w-3/4 max-md:w-full dark:text-[#333]">
                   {testimonial.comment}
                 </p>
