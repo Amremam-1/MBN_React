@@ -76,7 +76,7 @@ const Testimonial = () => {
                 </p>
                 <div className="flex items-center mt-auto">
                   <Image
-                    src={`/comments/${testimonial.image}`}
+                    src={testimonial.image}
                     alt={testimonial.name}
                     className="rounded-full w-[50px] h-[50px]"
                   />

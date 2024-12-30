@@ -2,9 +2,11 @@ import React from "react"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { GrSend } from "react-icons/gr"
+import useFetchService from "../hooks/useFetchService"
+import { useAddData } from "../hooks/useAddData"
 
 const Form = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const {
     register,
     handleSubmit,
@@ -12,10 +14,35 @@ const Form = () => {
     formState: { errors },
   } = useForm()
 
+  const { items: services, isLoading } = useFetchService("services")
+  const addDataMutation = useAddData("contactRequests")
+
   const onSubmit = (data) => {
-    console.log(data)
-    reset()
-    // Handle form submission here
+    const palyod = {
+      name: data.name,
+      email: data.email,
+      massage: data.massage,
+      phone: data.phone,
+      service_id: data.services,
+    }
+
+    addDataMutation.mutate(palyod, {
+      onSuccess: () => {
+        console.log("Data added successfully")
+        reset()
+      },
+      onError: (error) => {
+        console.error("Error adding data:", error)
+      },
+    })
+  }
+
+  if (isLoading) {
+    return (
+      <p className="text-xl text-blue-950 font-serif">
+        {/* {i18n.language === "en" ? "Loading..." : "تحميل..."} */}
+      </p>
+    )
   }
   return (
     <>
@@ -76,9 +103,13 @@ const Form = () => {
             className="mt-1 p-2 mb-3 w-full bg-darkBg dark:bg-lightBg dark:text-grayText opacity-60 border-b border-gray-600 focus:outline-none"
           >
             <option value="">Select a service</option>
-            <option value="webDevelopment">Web Development</option>
-            <option value="graphicDesign">Graphic Design</option>
-            <option value="marketing">Marketing</option>
+            {services.data.map((serviceItem) => (
+              <option key={serviceItem.id} value={serviceItem.id}>
+                {i18n.language === "ar"
+                  ? serviceItem.ar_name
+                  : serviceItem.en_name}
+              </option>
+            ))}
           </select>
           {errors.services && (
             <p className="text-red-500 text-sm mt-1">

@@ -77,17 +77,17 @@ const Portfolio = () => {
               1207: { slidesPerView: 3 },
             }}
             loop={projects.length > 3}
-            spaceBetween={30}
+            spaceBetween={10}
             onSlideChange={handleSlideChange}
           >
             {projects.map((item) => (
               <SwiperSlide key={item.id}>
-                <div className="relative overflow-hidden border border-[#A0A0A0] mb-8 mt-8 rounded-lg w-[320px] h-[320px] max-w-full">
-                  <a href={item.link}>
+                <div className="relative overflow-hidden border border-[#A0A0A0] mb-8 mt-8 rounded-lg w-[316px] h-[316px]">
+                  <a href={item.link} className="w-full h-full object-cover">
                     <Image
-                      src={`https://filterr.net/admin/informatinal/${item.image}`}
+                      src={item.image}
                       alt={item.en_name}
-                      className="opacity-50 w-[315px] h-[315px]"
+                      className=" object-fit w-full h-full"
                     />
                     <div className="absolute inset-0 flex items-end justify-start">
                       <h3 className="text-white text-xl font-bold p-4">
