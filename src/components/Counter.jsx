@@ -4,10 +4,18 @@ import { useTranslation } from "react-i18next"
 import clsx from "clsx"
 import { useContext } from "react"
 import ThemeContext from "./ThemeContext"
+import useFetchService from "../hooks/useFetchService"
+import CountUp from "react-countup"
 
 const Counter = () => {
   const { i18n } = useTranslation()
   const { darkMode } = useContext(ThemeContext)
+
+  const { items: counter, isLoading } = useFetchService("statistics")
+
+  if (isLoading) {
+    return <p>{/* {i18n.language === "en" ? "Loading..." : "تحميل..."} */}</p>
+  }
   return (
     <section
       id="about"
@@ -28,10 +36,16 @@ const Counter = () => {
           className="grid grid-cols-4 max-md:grid-cols-2 
         max-sm:grid-cols-1 gap-4 text-center"
         >
-          {counter.map((item) => (
+          {counter.data.map((item) => (
             <div className="flex flex-col gap-8" key={item.id}>
               <h1 className="text-[50px] font-semibold custom-outline">
-                {item.count}
+                <CountUp
+                  start={1}
+                  end={item.count}
+                  duration={2}
+                  separator="" // إزالة الفاصلة
+                />
+                +
               </h1>
               <p
                 className={clsx(
@@ -39,7 +53,7 @@ const Counter = () => {
                   i18n.language === "ar" && "text-unlock-arbic"
                 )}
               >
-                {i18n.language === "en" ? item.titleEn : item.titleAr}
+                {i18n.language === "en" ? item.title_en : item.title_ar}
               </p>
             </div>
           ))}

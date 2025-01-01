@@ -77,12 +77,12 @@ const Portfolio = () => {
               1207: { slidesPerView: 3 },
             }}
             loop={projects.length > 3}
-            spaceBetween={10}
+            // spaceBetween={10}
             onSlideChange={handleSlideChange}
           >
             {projects.map((item) => (
               <SwiperSlide key={item.id}>
-                <div className="relative overflow-hidden border border-[#A0A0A0] mb-8 mt-8 rounded-lg w-[316px] h-[316px]">
+                <div className="relative overflow-hidden  mt-8 rounded-lg w-[350px]">
                   <a href={item.link} className="w-full h-full object-cover">
                     <Image
                       src={item.image}

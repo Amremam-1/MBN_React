@@ -21,7 +21,7 @@ const Form = () => {
     const palyod = {
       name: data.name,
       email: data.email,
-      massage: data.massage,
+      message: data.message,
       phone: data.phone,
       service_id: data.services,
     }
