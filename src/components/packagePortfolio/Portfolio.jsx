@@ -1,5 +1,4 @@
 import { useState, useRef, useContext } from "react"
-import { linksPortfolio } from "../../constants"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 import "swiper/css/grid"
@@ -16,6 +15,7 @@ const Portfolio = () => {
   const { darkMode } = useContext(ThemeContext)
   const { t, i18n } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(0)
+  const [selectedServiceId, setSelectedServiceId] = useState(null)
   const swiperRef = useRef(null)
 
   const handleSlideChange = (swiper) => {
@@ -35,7 +35,15 @@ const Portfolio = () => {
   }
 
   const { data, isLoading } = useFetchData("projects")
+  const { data: servicesData, isLoading: serviceLoading } =
+    useFetchData("services")
+
   const projects = data?.status === "Success" ? data.data : []
+  const services = servicesData?.status === "Success" ? servicesData.data : []
+
+  const filteredProjects = selectedServiceId
+    ? projects.filter((project) => project.service_id === selectedServiceId)
+    : projects
 
   return (
     <div
@@ -54,11 +62,14 @@ const Portfolio = () => {
         <Image src={"../../../images/1.png"} alt="shape" />
       </div>
 
-      <PortfolioHeader linksPortfolio={linksPortfolio} />
+      <PortfolioHeader
+        services={services}
+        onServiceSelect={setSelectedServiceId}
+      />
 
       {/* Swiper Container */}
       <div className="container">
-        {isLoading ? (
+        {isLoading || serviceLoading ? (
           <div className="flex justify-between items-center gap-2 flex-col md:flex-row">
             {Array(3)
               .fill("")
@@ -66,7 +77,7 @@ const Portfolio = () => {
                 <Skeleton key={index} />
               ))}
           </div>
-        ) : projects.length > 0 ? (
+        ) : filteredProjects.length > 0 ? (
           <Swiper
             ref={swiperRef}
             slidesPerView={3}
@@ -80,7 +91,7 @@ const Portfolio = () => {
             // spaceBetween={10}
             onSlideChange={handleSlideChange}
           >
-            {projects.map((item) => (
+            {filteredProjects.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className="relative overflow-hidden  mt-8 rounded-lg w-[350px]">
                   <a href={item.link} className="w-full h-full object-cover">

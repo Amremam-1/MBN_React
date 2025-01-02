@@ -4,9 +4,14 @@ import { useTranslation } from "react-i18next"
 import clsx from "clsx"
 import ThemeContext from "../ThemeContext"
 
-const PortfolioHeader = ({ linksPortfolio }) => {
+const PortfolioHeader = ({ services, onServiceSelect }) => {
   const { t, i18n } = useTranslation()
   const { darkMode } = useContext(ThemeContext)
+
+  const handleServiceClick = (serviceId) => {
+    onServiceSelect(serviceId) // Update the selected service
+    console.log(serviceId)
+  }
   return (
     <div className="text-center mb-10 relative">
       <Image
@@ -34,15 +39,16 @@ const PortfolioHeader = ({ linksPortfolio }) => {
       </h1>
 
       <div className="flex justify-center flex-wrap gap-4 mt-6">
-        {linksPortfolio.map((link) => (
+        {services.map((link) => (
           <button
             key={link.id}
+            onClick={() => handleServiceClick(link.id)}
             className={clsx(
               "text-gray-300 hover:text-orange-500 dark:text-lightText dark:font-normal dark:hover:text-orangeText",
               i18n.language === "ar" && "text-unlock-arbic"
             )}
           >
-            {i18n.language === "en" ? link.linkEn : link.linkAr}
+            {i18n.language === "en" ? link.en_name : link.ar_name}
           </button>
         ))}
       </div>
