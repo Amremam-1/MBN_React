@@ -100,6 +100,10 @@ export const mask = [
     id: "17",
     imageUrl: "../../images/part17.png",
   },
+  {
+    id: "18",
+    imageUrl: "../../images/part18.png",
+  },
 ]
 
 export const services = [
