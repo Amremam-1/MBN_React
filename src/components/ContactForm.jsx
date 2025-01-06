@@ -11,7 +11,7 @@ import { CiLinkedin } from "react-icons/ci"
 import { FaSnapchat } from "react-icons/fa6"
 import { PiTiktokLogoLight } from "react-icons/pi"
 import Footer from "./Footer"
-import { FaXTwitter } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6"
 import ThemeContext from "./ThemeContext"
 import { useContext } from "react"
 
@@ -74,11 +74,13 @@ const ContactForm = () => {
           <ul className="mb-8 space-y-4">
             <li className="flex items-center">
               <MdOutlineLocalPhone className="text-xl me-4 text-[rgba(242,140,30,1)]" />
-              <span className="dark:text-lightText">+922 001 126 900</span>
+              <span className="dark:text-lightText">920006943</span>
             </li>
             <li className="flex items-center">
               <MdOutlineMailOutline className="text-xl me-4 text-[rgba(242,140,30,1)]" />
-              <span className="dark:text-lightText">Company.maher@gmail.com</span>
+              <span className="dark:text-lightText">
+                Company.maher@gmail.com
+              </span>
             </li>
             <li className="flex items-center">
               <IoLocationOutline className="text-xl me-4 text-[rgba(242,140,30,1)]" />
