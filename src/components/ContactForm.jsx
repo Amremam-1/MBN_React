@@ -87,11 +87,11 @@ const ContactForm = () => {
           </ul>
 
           <ul className="flex items-center gap-2">
-            <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
+            {/* <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
               <a href="">
                 <FiFacebook className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
-            </li>
+            </li> */}
             <li className="border border-[#E8E8E8]  rounded-full p-[5px] flex items-center justify-center">
               <a href="https://instagram.com/mbn_cp?igshid=YmMyMTA2M2Y=">
                 <FaInstagram className="text-xl text-[#E8E8E8] dark:text-orangeText" />
