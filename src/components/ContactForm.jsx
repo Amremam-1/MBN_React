@@ -11,7 +11,7 @@ import { CiLinkedin } from "react-icons/ci"
 import { FaSnapchat } from "react-icons/fa6"
 import { PiTiktokLogoLight } from "react-icons/pi"
 import Footer from "./Footer"
-
+import { FaXTwitter } from "react-icons/fa6";
 import ThemeContext from "./ThemeContext"
 import { useContext } from "react"
 
@@ -78,7 +78,7 @@ const ContactForm = () => {
             </li>
             <li className="flex items-center">
               <MdOutlineMailOutline className="text-xl me-4 text-[rgba(242,140,30,1)]" />
-              <span className="dark:text-lightText">info@momentummix.com</span>
+              <span className="dark:text-lightText">Company.maher@gmail.com</span>
             </li>
             <li className="flex items-center">
               <IoLocationOutline className="text-xl me-4 text-[rgba(242,140,30,1)]" />
@@ -93,23 +93,28 @@ const ContactForm = () => {
               </a>
             </li>
             <li className="border border-[#E8E8E8]  rounded-full p-[5px] flex items-center justify-center">
-              <a href="">
+              <a href="https://instagram.com/mbn_cp?igshid=YmMyMTA2M2Y=">
                 <FaInstagram className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
             <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
-              <a href="">
+              <a href="https://www.linkedin.com/feed/">
                 <CiLinkedin className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
             <li className="border border-[#E8E8E8] rounded-full p-[5px] flex items-center justify-center">
-              <a href="">
+              <a href="https://www.snapchat.com/add/mbn_cp?share_id=nSHsRYPML3Y&locale=ar-SA">
                 <FaSnapchat className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
             <li className="border border-[#E8E8E8]  rounded-full p-[5px] flex items-center justify-center">
-              <a href="">
+              <a href="https://www.tiktok.com/@mbn_cp?_t=8sTl18jExrc&_r=1">
                 <PiTiktokLogoLight className="text-xl text-[#E8E8E8] dark:text-orangeText" />
+              </a>
+            </li>
+            <li className="border border-[#E8E8E8]  rounded-full p-[5px] flex items-center justify-center">
+              <a href="https://x.com/mbn_cp?s=11&t=70EW0_0tTyEyVdhw_ohacQ">
+                <FaXTwitter className="text-xl text-[#E8E8E8] dark:text-orangeText" />
               </a>
             </li>
           </ul>

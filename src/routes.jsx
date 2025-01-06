@@ -1,7 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
-import Layout from "./components/Layout";
-import page from "./pages/Home/HomePage";
-import HomePage from "./pages/Home/HomePage";
+import { createBrowserRouter } from "react-router-dom"
+import Layout from "./components/Layout"
+import HomePage from "./pages/Home/HomePage"
 
 const routes = createBrowserRouter([
   {
@@ -14,6 +13,6 @@ const routes = createBrowserRouter([
       },
     ],
   },
-]);
+])
 
-export default routes;
+export default routes

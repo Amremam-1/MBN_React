@@ -43,9 +43,9 @@ const Intro = () => {
                 className="cursor-pointer ms-8 border border-orange-500 rounded-3xl w-80 h-14 max-md:w-48 max-sm:w-40 max-md:h-11 max-[375px]:ms-0
             bg-[url('../../images/bgvideo.webp')] bg-cover bg-center inline-flex items-center mt-8"
               >
-                <p className="w-9 h-9 ms-4 rounded-full bg-orange-500 flex items-center justify-center">
+                {/* <p className="w-9 h-9 ms-4 rounded-full bg-orange-500 flex items-center justify-center">
                   <FaPlay className="text-white text-xl" />
-                </p>
+                </p> */}
               </span>
             </h1>
           </div>
@@ -75,14 +75,15 @@ const Intro = () => {
            py-4 px-6 max-[573px]:px-3 max-[573px]:py-2 flex items-center
             justify-between gap-4 cursor-pointer dark:bg-orangeText dark:border-orangeText"
           >
-            <button
+            <a
+              href="https://api.whatsapp.com/message/C6R4P5DHJQBSC1?autoload=1&app_absent=0"
               className={clsx(
                 "text-xl orange font-medium dark:text-white",
                 i18n.language === "ar" && "text-unlock-arbic"
               )}
             >
               {t("intro-lets-get-started")}
-            </button>
+            </a>
             <span
               className="w-6 h-6 flex items-center justify-center 
             rounded-md -rotate-12 bg-orange-500 dark:bg-white"

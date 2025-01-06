@@ -10,7 +10,6 @@ const PortfolioHeader = ({ services, onServiceSelect }) => {
 
   const handleServiceClick = (serviceId) => {
     onServiceSelect(serviceId) // Update the selected service
-    console.log(serviceId)
   }
   return (
     <div className="text-center mb-10 relative">
@@ -38,7 +37,17 @@ const PortfolioHeader = ({ services, onServiceSelect }) => {
         {t("portfolio-title")}
       </h1>
 
-      <div className="flex justify-center flex-wrap gap-4 mt-6">
+      <div className="flex justify-center flex-wrap gap-4 mt-6 z-20 relative">
+        <button
+          onClick={() => handleServiceClick(null)}
+          className={clsx(
+            "text-gray-300 hover:text-orange-500 dark:text-lightText dark:font-normal dark:hover:text-orangeText",
+            i18n.language === "ar" && "text-unlock-arbic"
+          )}
+        >
+          {i18n.language === "en" ? "All" : "الكل"}
+        </button>
+
         {services.map((link) => (
           <button
             key={link.id}
@@ -57,3 +66,12 @@ const PortfolioHeader = ({ services, onServiceSelect }) => {
 }
 
 export default PortfolioHeader
+
+// onClick={() => handleServiceClick(null)} // Reset filter
+// className={clsx(
+//   "text-gray-300 hover:text-orange-500 dark:text-lightText dark:font-normal dark:hover:text-orangeText",
+//   i18n.language === "ar" && "text-unlock-arbic"
+// )}
+// >
+// All
+// </button>

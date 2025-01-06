@@ -1,9 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { GrSend } from "react-icons/gr"
 import useFetchService from "../hooks/useFetchService"
 import { useAddData } from "../hooks/useAddData"
+import Toast from "./Toast"
+import clsx from "clsx"
 
 const Form = () => {
   const { t, i18n } = useTranslation()
@@ -13,6 +15,7 @@ const Form = () => {
     reset,
     formState: { errors },
   } = useForm()
+  const [showToast, setShowToast] = React.useState(false)
 
   const { items: services, isLoading } = useFetchService("services")
   const addDataMutation = useAddData("contactRequests")
@@ -28,7 +31,10 @@ const Form = () => {
 
     addDataMutation.mutate(palyod, {
       onSuccess: () => {
-        console.log("Data added successfully")
+        setShowToast(true)
+        setTimeout(() => {
+          setShowToast(false)
+        }, 3000)
         reset()
       },
       onError: (error) => {
@@ -45,7 +51,7 @@ const Form = () => {
     )
   }
   return (
-    <>
+    <div className="relative">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
           <label className="block text-sm font-medium dark:text-lightText">
@@ -143,7 +149,16 @@ const Form = () => {
           </button>
         </div>
       </form>
-    </>
+      <div
+        className={clsx(
+          i18n.language === "en"
+            ? "absolute bottom-0 right-0"
+            : "absolute bottom-0 left-0"
+        )}
+      >
+        {showToast && <Toast />}
+      </div>
+    </div>
   )
 }
 
