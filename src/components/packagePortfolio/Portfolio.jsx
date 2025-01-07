@@ -207,7 +207,7 @@ const Portfolio = () => {
       />
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 px-14 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 px-14 max-sm:px-0 gap-5">
         {isLoading || serviceLoading ? (
           Array(6)
             .fill("")

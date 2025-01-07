@@ -17,7 +17,7 @@ const Mask = () => {
   return (
     <section
       className={clsx(
-        "bg-[#3e2d20] h-[160px] flex items-center",
+        "bg-[#3e2d20] h-[140px] max-md:h-[120px] max-sm:h-[80px] flex mt-auto justify-center items-center",
         darkMode && "bg-grayText/20"
       )}
     >
@@ -51,7 +51,7 @@ const Mask = () => {
               <Image
                 src={item.imageUrl}
                 alt={item.id}
-                className="w-[260px] rounded-full object-fill"
+                className="rounded-full max-sm:h-[140px] object-cover"
               />
             </div>
           </SwiperSlide>
