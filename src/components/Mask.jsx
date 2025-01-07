@@ -51,7 +51,7 @@ const Mask = () => {
               <Image
                 src={item.imageUrl}
                 alt={item.id}
-                className="rounded-full max-sm:h-[140px] object-cover"
+                className="rounded-full h-[210px] max-sm:h-[140px] object-cover"
               />
             </div>
           </SwiperSlide>
