@@ -296,7 +296,7 @@ const Services = () => {
                     </h2>
                     <p className="text-[#A0A0A0] font-light w-3/4 max-[991px]:w-full dark:text-grayText dark:font-normal">
                       {i18n.language === "en"
-                        ? item.ar_description
+                        ? item.en_description
                         : item.ar_description}
                     </p>
 
